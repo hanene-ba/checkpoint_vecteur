@@ -1,0 +1,54 @@
+
+FUNCTION test_size() : INTEGER
+VAR
+    N : INTEGER; 
+BEGIN
+    REPEAT
+        Write("saisir la taille du vecteur" )
+    UNTIL (N <= 0 )OR (n > 40)
+    RETURN N ;
+END
+
+PROCEDURE remplir_vecteur(VAR N : INTEGER, VAR vect : ARRAY_OF INTEGER )
+VAR
+    i : INTEGER; 
+BEGIN
+    FOR i FROM 0 TO N - 1  DO
+        Read (vect[i]);
+    END_FOR
+END
+ // fin saisie 2 array 
+
+ALGORITHM Calcul_orthogonaux
+VAR
+    prod : INTEGER := 1 ; 
+    i , N , M, j : INTEGER; 
+    vect1, vect2: ARRAY_OF INTEGER [40];
+    existe : BOOLEAN; 
+
+//insertion des 2 vecteur 
+
+BEGIN
+ N := test_size() ;
+ M := test_size() ;
+ remplir_venteur(N,vect1);
+ remplir_vecteur(M,vect2);
+
+// teste des tab vide + recherche distincts 
+
+IF (N=0) and (M <> 0) THEN
+    prod := 0 
+ 
+
+ELSE_IF (M=0) and (N<>0) THEN
+        prod := 0 
+ELSE
+    FOR i FROM 0 TO N -1 STEP 1  DO
+        FOR j FROM 0 TO M -1 STEP 1  DO
+        (prod = prod + (vect1 [i] * vect2[j]) ) THEN
+        END_FOR
+    END_FOR    
+IF ((prod = 0 ) and (j = M -1))  THEN
+      Write("les 2 vecteurs sont orthogonaux ") 
+END_IF   
+END 
